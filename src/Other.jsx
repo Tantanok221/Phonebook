@@ -21,6 +21,7 @@ const Filter = ({ data }) => {
     return (
         <>
             filter shown with <input id="FILTER" onChange={filter}></input>
+            <div className="line"></div>
         </>
     );
 };
