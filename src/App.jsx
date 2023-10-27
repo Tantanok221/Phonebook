@@ -5,7 +5,12 @@ const App = ({ data }) => {
     const [persons, setPersons] = useState(data);
     return (
         <div className="card">
-            <div className="decoline"></div>
+            <div className="decoline line1"></div>
+            <div className="gridline">
+                <div className="decoline"></div>
+                <div className="decoline"></div>
+                <div className="decoline"></div>
+            </div>
             <div className="header">
                 <h1>Phonebook</h1>
                 <p>
@@ -22,7 +27,7 @@ const App = ({ data }) => {
 
             <h2>Numbers</h2>
             <Person data={persons} />
-            <div className="decoline"></div>
+            <div className="decoline line2"></div>
         </div>
     );
 };
