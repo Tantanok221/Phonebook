@@ -22,7 +22,6 @@ const App = ({ data }) => {
 
             <Filter data={persons} />
 
-            <h2>Add new</h2>
             <Form data={persons} move={setPersons} />
 
             <h2>Numbers</h2>

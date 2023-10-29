@@ -1,19 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700,600,300')
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,500,700,600,300')
 @import url('https://fonts.googleapis.com/css?family=Inter:500')
 
 $padding-between-grid: 23vw
 $border-color: #D0C6C6
 $padding-LR: 2.3%
+$bgc-color: #ECE7E3
+*
+    font-family: Rajdhani
 body
     color: #000
-    background-color: #ECE7E3
+    background-color: $bgc-color
     padding: 0px
     margin: 0px
     font-family: Rajdhani
+    font-size: 16px
 h1,
 h2,
 h3,
-p
+p,
+button
     padding: 0px
     margin: 0px
     width: fit-content
@@ -21,6 +26,17 @@ h1
     font-family: Inter
     font-size: 4rem
     font-weight: 500
+p
+    font-size: 1rem
+    font-weight: 500
+input
+    border: none
+    background-color: $bgc-color
+input:focus-visible
+    outline: none
+    border-bottom: solid #000 1px
+    font-family: Rajdhani
+
 .card
     position: relative
     display: flex
@@ -32,6 +48,13 @@ h1
 .decoline
     border-left: solid $border-color 1px
     height: 100vh
+.widthline
+    border-bottom: solid $border-color 1px
+    width: 100%
+
+
+.line1,.line2,.gridline
+    z-index: 3
 .line1
     position: absolute
     left: $padding-LR
@@ -46,3 +69,68 @@ h1
     left: $padding-between-grid
 .header
     padding-top: 64px
+    display: flex
+
+    p
+        position: absolute
+        left: ($padding-between-grid * 2) + 0.1vw
+        width: 270px
+.searchArea
+    margin-top: 51px
+    position: relative
+.searchBox
+    width: 100%
+    height: 55.5px
+
+    border-bottom: solid $border-color 1px
+    display: flex
+    gap: 14px
+    align-items: center
+    font-size: 1.5rem
+
+.searchIcon
+
+    z-index: 2
+    opacity: 0.5
+    padding-left: 5px
+
+::placeholder
+
+    font-weight: 400
+    padding-top: 5px
+    line-height: 150%
+.searchBox:focus-visible
+    z-index: 2
+    position: absolute
+    font-size: 2rem
+
+.addForm
+    display: flex
+    flex-direction: column
+    margin-top: 60px
+    position: relative
+.addName,.addNumber
+    height: 50.5px
+    
+.addNumber
+    position: absolute
+    left: $padding-between-grid * 2 + 0.1vw
+#NUMBER,#NAME
+    height: 50.5px
+#NUMBER::placeholder,#NAME::placeholder
+    padding-left: 15px
+    font-size: 1.425rem
+.submitForm
+    width: $padding-between-grid
+    border: none
+    background-color: $bgc-color
+    position: absolute
+    left: $padding-between-grid * 3 
+    font-size: 1.425rem
+    display: flex
+    gap: 15px
+    text-align: right
+.addIcon
+    font-size: 1.5rem
+    
+    
