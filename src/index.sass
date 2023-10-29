@@ -18,7 +18,8 @@ h1,
 h2,
 h3,
 p,
-button
+button,
+input
     padding: 0px
     margin: 0px
     width: fit-content
@@ -51,10 +52,15 @@ input:focus-visible
 .widthline
     border-bottom: solid $border-color 1px
     width: 100%
-
+    
+#FormLine
+    z-index: 2
+    position: absolute
+    bottom: 1px
 
 .line1,.line2,.gridline
     z-index: 3
+    pointer-events: none
 .line1
     position: absolute
     left: $padding-LR
@@ -94,11 +100,10 @@ input:focus-visible
     opacity: 0.5
     padding-left: 5px
 
-::placeholder
-
-    font-weight: 400
-    padding-top: 5px
-    line-height: 150%
+    ::placeholder
+        font-weight: 400
+        padding-top: 5px
+        line-height: 150%
 .searchBox:focus-visible
     z-index: 2
     position: absolute
@@ -106,31 +111,41 @@ input:focus-visible
 
 .addForm
     display: flex
-    flex-direction: column
+    flex-direction: row
     margin-top: 60px
     position: relative
-.addName,.addNumber
-    height: 50.5px
     
+.addName,.addNumber
+    width: fit-content
+    display: flex
+    align-items: center
 .addNumber
+    left: $padding-between-grid + 0.5vw
     position: absolute
-    left: $padding-between-grid * 2 + 0.1vw
+
+#phoneIcon,#userIcon
+    scale: 1.25
+.addIcon
+    scale: 1.1
+    padding-right: 15px
 #NUMBER,#NAME
     height: 50.5px
-#NUMBER::placeholder,#NAME::placeholder
-    padding-left: 15px
+    width: fit-content
     font-size: 1.425rem
+    padding-left: 15px
+
 .submitForm
-    width: $padding-between-grid
+    z-index: 1
+    width: fit-content
     border: none
     background-color: $bgc-color
-    position: absolute
-    left: $padding-between-grid * 3 
     font-size: 1.425rem
-    display: flex
-    gap: 15px
     text-align: right
-.addIcon
-    font-size: 1.5rem
+    display: flex
+    align-items: center
+    position: absolute
+    right: 1px
+    height: 50.5px
     
-    
+#NAME:focus-visible,#NUMBER:focus-visible
+    z-index: 2
