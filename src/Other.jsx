@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { FiSearch, FiUser, FiPhone, FiPlusCircle } from "react-icons/fi";
+import { FiSearch, FiUser, FiPhone, FiPlusCircle,FiTrash2 } from "react-icons/fi";
 const BaseURL = "http://localhost:3000/persons/";
 
 const Filter = ({ data }) => {
@@ -99,15 +99,16 @@ const Person = ({ data, move }) => {
   return (
     <>
       <div id="manipulate">
-        {data.map((val) => (
-          <>
-            <p key={val.id}>
-              {val.name} {val.number}
-            </p>
+        {data.map((val, i) => (
+          <div key={val.id} className="dataBox">
+            <h3>{i}</h3>
+            <div className="userName"><FiUser className="userIcon"/> {val.name}</div>
+            <div className="phoneNumber"><FiPhone className="phoneIcon" />{val.number}</div>
             <button onClick={click} name={val.name} id={val.id}>
-              Delete
+              <FiTrash2 className="trashIcon"/>Delete Contact
             </button>
-          </>
+            <div className="widthline"></div>
+          </div>
         ))}
       </div>
     </>
