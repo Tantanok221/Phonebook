@@ -11,17 +11,19 @@ const BaseURL = "http://localhost:3000/persons/";
 
 const Filter = ({ data }) => {
   function filter(event) {
-    let filter = document.querySelector("#FILTER").value.replace(/\s/g, "");
-    console.log(data);
+    let filter = document.querySelector("#FILTER").value.replace(/\s/g, "").toLowerCase();
     let nameTrim = data
-      .map((val, i) => val.name.replace(/\s/g, ""))
+      .map((val, i) => val.name.replace(/\s/g, "").toLowerCase())
     
     let filterID = []
-    nameTrim.forEach((val,i) => {if(val.includes(filter)) filterID.push(i)})
+    nameTrim.forEach((val,i) => {if(val.includes(filter)) filterID.push(i + 1)})
     console.log(filterID)
     document.querySelector("#manipulate").innerHTML = "";
-     
+    console.log(data)
     // TODO: Searching function still have some bugs
+    let filterData = data.filter(val => filterID == val.id)
+    console.log(filterData)
+    document.querySelector("#manipulate").outerHTML = <Person data={filterData} />
   }
 
   return (
@@ -90,7 +92,7 @@ const Form = ({ data, move }) => {
   );
 };
 
-const Person = ({ data, move }) => {
+const Person = ({ data }) => {
   function click(event, ho) {
     const name = event.currentTarget.getAttribute("name");
     const id = event.currentTarget.getAttribute("id");
