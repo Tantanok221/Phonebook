@@ -1,8 +1,32 @@
 import { useState } from "react";
-import { Filter, Form, Person } from "./Other";
-
+import { Form, Person } from "./Other";
+import { FiSearch } from "react-icons/fi";
 const App = ({ data }) => {
   const [persons, setPersons] = useState(data);
+  console.log(data);
+  function filter(event) {
+    let filter = document
+      .querySelector("#FILTER")
+      .value.replace(/\s/g, "")
+      .toLowerCase();
+    let nameTrim = data.map((val, i) =>
+      val.name.replace(/\s/g, "").toLowerCase()
+    );
+
+    let filterID = [];
+    nameTrim.forEach((val, i) => {
+      if (val.includes(filter)) filterID.push(i + 1);
+    });
+    console.log(filterID);
+    // document.querySelector("#manipulate").innerHTML = "";
+    console.log(data);
+    let filterData = data.filter((val) => filterID.includes(val.id));
+
+    console.log(filterData);
+    setPersons(filterData);
+    if (document.querySelector("#FILTER").value == "") setPersons(data);
+    
+  }
   return (
     <div className="card">
       <div className="decoline line1"></div>
@@ -18,7 +42,18 @@ const App = ({ data }) => {
           endeavors, never forget the precious bonds of family and friends.
         </p>
       </div>
-      <Filter data={persons} />
+      <div className="searchArea">
+        <div className="searchBox">
+          <FiSearch className="searchIcon" />
+
+          <input
+            id="FILTER"
+            onChange={filter}
+            className="searchBox"
+            placeholder="Search ..."
+          ></input>
+        </div>
+      </div>
       <Form data={persons} move={setPersons} />
       <Person data={persons} />
       <div className="decoline line2"></div>

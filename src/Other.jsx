@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import {
-  FiSearch,
+  
   FiUser,
   FiPhone,
   FiPlusCircle,
@@ -9,38 +9,7 @@ import {
 } from "react-icons/fi";
 const BaseURL = "http://localhost:3000/persons/";
 
-const Filter = ({ data }) => {
-  function filter(event) {
-    let filter = document.querySelector("#FILTER").value.replace(/\s/g, "").toLowerCase();
-    let nameTrim = data
-      .map((val, i) => val.name.replace(/\s/g, "").toLowerCase())
-    
-    let filterID = []
-    nameTrim.forEach((val,i) => {if(val.includes(filter)) filterID.push(i + 1)})
-    console.log(filterID)
-    document.querySelector("#manipulate").innerHTML = "";
-    console.log(data)
-    // TODO: Searching function still have some bugs
-    let filterData = data.filter(val => filterID == val.id)
-    console.log(filterData)
-    document.querySelector("#manipulate").outerHTML = <Person data={filterData} />
-  }
 
-  return (
-    <div className="searchArea">
-      <div className="searchBox">
-        <FiSearch className="searchIcon" />
-
-        <input
-          id="FILTER"
-          onChange={filter}
-          className="searchBox"
-          placeholder="Search ..."
-        ></input>
-      </div>
-    </div>
-  );
-};
 
 function findID(name, data) {
   return data.find((person) => person.name === name).id;
@@ -109,7 +78,7 @@ const Person = ({ data }) => {
       <div id="manipulate">
         {data.map((val, i) => (
           <div key={val.id} className="dataBox">
-            <h3>{i}</h3>
+            <h3>{val.id}</h3>
             <div className="userName">
               <FiUser className="userIcon" /> {val.name}
             </div>
@@ -129,4 +98,4 @@ const Person = ({ data }) => {
   );
 };
 
-export { Filter, Form, Person };
+export { Form, Person };
