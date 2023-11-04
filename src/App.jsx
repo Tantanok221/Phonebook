@@ -3,7 +3,7 @@ import { Form, Person } from "./Other";
 import { FiSearch } from "react-icons/fi";
 const App = ({ data }) => {
   const [persons, setPersons] = useState(data);
-  console.log(data);
+
   function filter(event) {
     let filter = document
       .querySelector("#FILTER")
@@ -17,18 +17,17 @@ const App = ({ data }) => {
     nameTrim.forEach((val, i) => {
       if (val.includes(filter)) filterID.push(i + 1);
     });
-    console.log(filterID);
-    // document.querySelector("#manipulate").innerHTML = "";
-    console.log(data);
+
     let filterData = data.filter((val) => filterID.includes(val.id));
 
-    console.log(filterData);
     setPersons(filterData);
     if (document.querySelector("#FILTER").value == "") setPersons(data);
-    
   }
   return (
+    <>
+    <div className="grainy"></div>
     <div className="card">
+      
       <div className="decoline line1"></div>
       <div className="gridline">
         <div className="decoline"></div>
@@ -58,7 +57,9 @@ const App = ({ data }) => {
       <Person data={persons} />
       <div className="decoline line2"></div>
     </div>
-  );
+
+    </>
+      );
 };
 
 export default App;
